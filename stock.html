@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Display</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Leo Club Logo">
+        </div>
+        <h1>Leo Club Stock Management</h1>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/leo.club.curubis.korba" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/leo_club_curubis_korba/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+    <div class="container" id="stock-container">
+    </div>
+    <button id="add-item-button"><i class="fas fa-plus"></i></button>
+    <footer>
+        <p>&copy; 2025 Leo Club Curubis. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="item-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Add New Item</h2>
+            <form id="item-form">
+                <label for="item-name" id="mn">Name:</label>
+                <input type="text" id="item-name" name="item-name" required>
+                <label for="item-price" id="mn">Price:</label>
+                <input type="number" id="item-price" name="item-price" required>
+                <label for="item-quantity" id="mn">Quantity:</label>
+                <input type="number" id="item-quantity" name="item-quantity" required>
+                <label for="item-image" id="mn">Image:</label>
+                <input type="file" id="item-image" name="item-image" accept="image/*" required>
+                <button type="submit">Add Item</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

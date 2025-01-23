@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+header {
+    background: linear-gradient(90deg, #c70000, #f82c2c);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .logo img {
+    height: 50px; /* Adjust the height as needed */
+    margin-left: 20px;
+}
+header h1 {
+    margin: 0;
+    flex-grow: 1;
+}
+.social-icons {
+    margin-right: 20px;
+}
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+.social-icons a:hover {
+    color: #fa5454;
+}
+footer {
+    background: #c70000;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1; /* Ensure footer is above other content */
+}
+.container {
+    width: 80%;
+    margin: 20px auto 0 auto; /* Add top margin to create space from the header */
+    overflow: hidden;
+    padding-bottom: 60px; /* To ensure content is not hidden behind the footer */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Add space between items */
+}
+.stock-item {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    flex: 1 1 calc(15% - 40px); /* Adjust width and margin */
+    box-sizing: border-box;
+    height: 250px; /* Adjust height to accommodate quantity controls */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative; /* For positioning the delete button */
+    transition: transform 0.2s ease-in-out; /* Add transition for smooth animation */
+}
+.stock-item.dragging {
+    opacity: 0.4;
+    transform: scale(1.05); /* Slightly enlarge the item being dragged */
+}
+.stock-item h2 {
+    margin: 0 0 10px;
+    color: #c70000; /* Red color for item titles */
+}
+.stock-item p {
+    margin: 0;
+    color: #c70000; /* Red color for item text */
+}
+.stock-item .item-image {
+    max-width: 100px; /* Adjust the max width as needed */
+    max-height: 100px; /* Adjust the max height as needed */
+    object-fit: cover;
+    margin-left: 47%;
+    margin-top: 20px;
+    position: absolute;
+}
+.stock-item .item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.stock-item .item-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+}
+.quantity-control label {
+    font-size: 16px;
+    color: #c70000; /* Red color for labels */
+}
+.quantity-control button {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #c70000; /* Red background for buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.quantity-control button:hover {
+    background-color: #fa5454; /* Lighter red on hover */
+}
+.quantity-control span {
+    font-size: 16px;
+    width: 30px;
+    text-align: center;
+    color: #c70000; /* Red color for quantity text */
+}
+#add-item-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #c70000; /* Red background for add button */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* Ensure button is above the footer */
+}
+#add-item-button:hover {
+    background-color: #fa5454; /* Lighter red on hover */
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content h2 {
+    color: #c70000; /* Red color for modal title */
+    margin: 0 0 10px;
+    font-size: 30px;
+}
+.modal-content input {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+.modal-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: "Outfit", serif;
+    background-color: #c70000; /* Red background for buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#mn{
+    margin-left: 5px;
+    color: #c70000;
+
+}
+.modal-content {
+    background-color: #fefefe;
+    border-radius: 25px;
+
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Delete button styles */
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+}
+.delete-button:hover {
+    color: #f00;
+}
